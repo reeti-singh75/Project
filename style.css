@@ -1,0 +1,319 @@
+/* --- Base and Reset --- */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    transition: background-color 0.3s, color 0.3s; /* Transition for smoothness */
+}
+
+body {
+    min-height: 100vh;
+}
+
+.hidden {
+    display: none !important;
+}
+
+/* --- Theme Variables --- */
+body.light-theme {
+    --bg-color: #f4f7f9;
+    --text-color: #333;
+    --card-bg: #fff;
+    --shadow-color: rgba(0, 0, 0, 0.1);
+    --header-bg: #e9ecef;
+    --auth-box-bg: #fff;
+}
+
+body.dark-theme {
+    --bg-color: #1a1a2e;
+    --text-color: #e0e0e0;
+    --card-bg: #2c2c47;
+    --shadow-color: rgba(0, 0, 0, 0.5);
+    --header-bg: #2a2a44;
+    --auth-box-bg: #2c2c47;
+}
+
+body {
+    background-color: var(--bg-color);
+    color: var(--text-color);
+}
+
+/* --- Utility Buttons --- */
+.btn {
+    padding: 8px 15px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-weight: bold;
+    transition: opacity 0.2s;
+}
+
+.btn:hover {
+    opacity: 0.85;
+}
+
+.btn-primary {
+    background-color: #007bff;
+    color: white;
+}
+
+.btn-success {
+    background-color: #28a745;
+    color: white;
+}
+
+.btn-logout {
+    background-color: #dc3545;
+    color: white;
+}
+
+/* --- Header and Controls --- */
+#main-header {
+    background-color: var(--header-bg);
+    box-shadow: 0 2px 5px var(--shadow-color);
+}
+
+.header-content {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 15px 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.app-title {
+    font-size: 1.5em;
+}
+
+.controls {
+    display: flex;
+    gap: 15px;
+    align-items: center;
+}
+
+#theme-toggle {
+    background: none;
+    border: none;
+    color: var(--text-color);
+    font-size: 1.2em;
+    cursor: pointer;
+}
+
+.user-display {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+/* --- Auth View Styling --- */
+.main-view {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+#auth-view {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: calc(100vh - 70px); /* Adjust height */
+}
+
+.auth-box {
+    background-color: var(--auth-box-bg);
+    padding: 30px;
+    border-radius: 8px;
+    box-shadow: 0 4px 12px var(--shadow-color);
+    width: 100%;
+    max-width: 400px;
+    text-align: center;
+}
+
+#auth-form input {
+    width: 100%;
+    padding: 10px;
+    margin: 8px 0;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    background-color: var(--card-bg); /* Match theme */
+    color: var(--text-color);
+}
+
+.auth-info {
+    margin-top: 10px;
+    font-size: 0.9em;
+    color: #6c757d;
+}
+
+.error-message {
+    color: #ff6b6b;
+    margin-top: 15px;
+    font-weight: bold;
+}
+
+
+/* --- Task Manager Layout --- */
+
+.task-sections-container {
+    display: flex;
+    gap: 20px;
+    margin-top: 20px;
+}
+
+.task-column {
+    flex: 1;
+    padding: 20px;
+    border-radius: 8px;
+    min-height: 70vh;
+    box-shadow: 0 2px 10px var(--shadow-color);
+    color: white; /* Task columns always have white text for contrast */
+}
+
+/* Requirement: Distinct Background Colors */
+.pending {
+    background-color: #c0392b; /* Darker Red */
+}
+
+.completed {
+    background-color: #27ae60; /* Darker Green */
+}
+
+.task-column h3 {
+    margin-bottom: 15px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.3);
+    padding-bottom: 10px;
+}
+
+/* Task Card Styling */
+.task-card {
+    background-color: rgba(255, 255, 255, 0.9);
+    color: #333;
+    padding: 15px;
+    margin-bottom: 15px;
+    border-radius: 6px;
+    box-shadow: 0 2px 4px var(--shadow-color);
+    opacity: 1;
+    animation: fadeIn 0.5s ease-out; /* Bonus: Fade-in animation */
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+.task-card h4 {
+    margin-bottom: 5px;
+    font-size: 1.1em;
+}
+
+.task-card .task-number {
+    font-weight: bold;
+    margin-right: 8px;
+    color: #3498db;
+}
+
+.task-card .actions {
+    margin-top: 10px;
+}
+
+.task-card .actions button {
+    margin-right: 5px;
+    padding: 6px 10px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 0.85em;
+}
+
+/* Action button colors */
+.edit-btn { background-color: #f1c40f; }
+.complete-btn { background-color: #3498db; color: white;}
+.delete-btn { background-color: #95a5a6; color: white; }
+
+/* --- FAB Button --- */
+.fab {
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    width: 55px;
+    height: 55px;
+    border-radius: 50%;
+    background-color: #e74c3c;
+    color: white;
+    font-size: 24px;
+    border: none;
+    cursor: pointer;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+    z-index: 5;
+}
+
+/* --- Modal Styling (Same as before, but ensure it respects themes) --- */
+.modal {
+    /* ... modal styling remains similar but respects theme ... */
+    position: fixed;
+    z-index: 10;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.6);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.modal-content {
+    background-color: var(--auth-box-bg);
+    color: var(--text-color);
+    padding: 30px;
+    border-radius: 8px;
+    width: 90%;
+    max-width: 500px;
+    position: relative;
+    box-shadow: 0 5px 15px var(--shadow-color);
+}
+
+.close-button {
+    position: absolute;
+    top: 10px;
+    right: 15px;
+    color: var(--text-color);
+    background: none;
+    border: none;
+    font-size: 24px;
+    cursor: pointer;
+}
+
+/* --- Responsive Design (Mobile First) --- */
+
+@media (max-width: 768px) {
+    .task-sections-container {
+        flex-direction: column; /* Columns stack on mobile */
+    }
+
+    .task-column {
+        min-height: auto; /* Allow height to collapse */
+    }
+
+    .header-content {
+        flex-direction: column;
+        gap: 10px;
+        padding-bottom: 10px;
+    }
+    
+    .app-title {
+        font-size: 1.3em;
+    }
+
+    .controls {
+        width: 100%;
+        justify-content: space-between;
+    }
+
+    .user-display {
+        flex-grow: 1;
+        justify-content: flex-end;
+    }
+}
